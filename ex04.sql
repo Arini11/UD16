@@ -1,0 +1,10 @@
+SELECT nombre FROM peliculas;
+SELECT DISTINCT calificacionedad FROM peliculas WHERE calificacionedad IS NOT NULL;
+SELECT * FROM peliculas WHERE calificacionedad IS NULL;
+SELECT * FROM salas WHERE pelicula IS NULL;
+SELECT * FROM salas AS a LEFT JOIN peliculas AS b ON a.pelicula = b.codigo;
+SELECT * FROM peliculas AS a LEFT JOIN salas AS b ON a.codigo = b.pelicula;
+SELECT nombre FROM peliculas WHERE codigo NOT IN (SELECT pelicula FROM salas WHERE pelicula IS NOT NULL);
+INSERT INTO peliculas VALUES(10, 'Uno, dos, tres', 'PG7');
+UPDATE peliculas SET calificacionedad = 'PG13' WHERE calificacionedad IS NULL;
+DELETE FROM salas WHERE pelicula IN (SELECT codigo FROM peliculas WHERE calificacionedad = "G");
